@@ -1,0 +1,10 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <h5>Analytics</h5>
+    <div *ngIf="summary.length===0" class="text-muted">No data yet</div>
+    <table class="table" *ngIf="summary.length">
+      <thead><tr><th>Restaurant ID</th><th>Orders</th><th>Revenue</th></tr></thead>
+      <tbody><tr *ngFor="let s of summary"><td>{{ s.restaurantId }}</td><td>{{ s.count }}</td><td>₹{{ s.revenue }}</td></tr></tbody>
+    </table>
+  </div>
+</div>

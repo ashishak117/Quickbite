@@ -1,0 +1,22 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5>My Restaurants</h5>
+      <a class="btn btn-sm btn-primary" routerLink="/owner/register-restaurant">Register new</a>
+    </div>
+
+    <div *ngFor="let r of restaurants" class="mt-2 border p-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ r.name }}</strong>
+          <div class="small text-muted">{{ r.address }}</div>
+          <div *ngIf="!r.approved" class="text-warning">Waiting for admin approval</div>
+          <div *ngIf="r.deniedMessage" class="text-danger">Denied: {{ r.deniedMessage }}</div>
+        </div>
+        <div>
+          <button class="btn btn-sm btn-outline-primary" (click)="openMenu(r)" [disabled]="!r.approved">Manage Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

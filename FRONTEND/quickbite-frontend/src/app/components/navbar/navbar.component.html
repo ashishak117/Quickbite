@@ -1,0 +1,72 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/">
+      <img src="assets/logo.png" alt="QB" class="navbar-logo" *ngIf="logoExists; else textLogo"/>
+      <ng-template #textLogo><span class="fw-bold">QuickBite</span></ng-template>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Restaurants</a>
+        </li>
+
+        <li class="nav-item" *ngIf="auth.currentUser?.role === 'CUSTOMER'">
+          <a class="nav-link position-relative" routerLink="/cart">
+            Cart
+            <span *ngIf="cartCount>0" class="badge bg-danger ms-1 cart-badge">{{ cartCount }}</span>
+          </a>
+        </li>
+
+        <!-- Owner menu -->
+        <li class="nav-item dropdown" *ngIf="auth.currentUser?.role === 'OWNER'">
+          <a class="nav-link dropdown-toggle" href="#" id="ownerMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Owner</a>
+          <ul class="dropdown-menu" aria-labelledby="ownerMenu">
+            <li><a class="dropdown-item" routerLink="/owner/home">My Restaurants</a></li>
+            <!-- <li><a class="dropdown-item" routerLink="/owner/menu/0">Manage Menu</a></li> -->
+            <li><a class="dropdown-item" routerLink="/owner/orders">Orders</a></li>
+            <!-- <li><a class="dropdown-item" routerLink="/owner/analytics">Analytics</a></li> -->
+          </ul>
+        </li>
+
+        <!-- Admin menu -->
+        <li class="nav-item dropdown" *ngIf="auth.currentUser?.role === 'ADMIN'">
+          <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
+          <ul class="dropdown-menu" aria-labelledby="adminMenu">
+            <li><a class="dropdown-item" routerLink="/admin/approvals">Approvals</a></li>
+            <li><a class="dropdown-item" routerLink="/admin/dashboard">Analytics</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <!-- Not logged in -->
+        <li class="nav-item" *ngIf="!auth.isLoggedIn">
+          <a class="nav-link" routerLink="/auth">Login / Register</a>
+        </li>
+
+        <!-- Logged in -->
+        <li class="nav-item dropdown" *ngIf="auth.isLoggedIn">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="user-initial">{{ userInitial }}</span>
+            <span class="d-none d-md-inline">{{ auth.currentUser?.name || auth.currentUser?.email }}</span>
+            <small *ngIf="auth.currentUser?.role" class="ms-2 badge bg-secondary">{{ auth.currentUser.role }}</small>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+  <li *ngIf="auth.currentUser?.role !== 'ADMIN'"><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+  <li *ngIf="auth.currentUser?.role === 'CUSTOMER'"><a class="dropdown-item" routerLink="/orders">My Orders</a></li>
+  <li *ngIf="auth.currentUser?.role === 'OWNER'"><a class="dropdown-item" routerLink="/owner/home">My Restaurants</a></li>
+  <li *ngIf="auth.currentUser?.role === 'ADMIN'"><a class="dropdown-item" routerLink="/admin/approvals">Approvals</a></li>
+  <li><hr class="dropdown-divider"></li>
+  <li><button class="dropdown-item" (click)="logout()">Logout</button></li>
+</ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

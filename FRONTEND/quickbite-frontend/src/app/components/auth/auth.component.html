@@ -1,0 +1,48 @@
+<div class="card mt-4">
+  <div class="card-body">
+    <h4>{{ authForm.value.mode === 'login' ? 'Login' : 'Register' }}</h4>
+
+    <div class="btn-group mb-3">
+      <button class="btn btn-outline-primary" [class.active]="authForm.value.mode === 'login'" (click)="switchMode('login')">Login</button>
+      <button class="btn btn-outline-primary" [class.active]="authForm.value.mode === 'register'" (click)="switchMode('register')">Register</button>
+    </div>
+
+    <form (ngSubmit)="submit()" [formGroup]="authForm">
+      <div *ngIf="authForm.value.mode === 'register'">
+        <div class="mb-2">
+          <label>Name</label>
+          <input formControlName="name" class="form-control" required>
+        </div>
+        <div class="mb-2">
+          <label>Phone</label>
+          <input formControlName="phone" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label>Address</label>
+          <input formControlName="address" class="form-control">
+        </div>
+        <div class="mb-2">
+          <label>Register as</label>
+          <select class="form-select" formControlName="role">
+            <option value="CUSTOMER">Customer</option>
+            <option value="OWNER">Owner</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label>Email</label>
+        <input formControlName="email" class="form-control" required>
+      </div>
+
+      <div class="mb-2">
+        <label>Password</label>
+        <input type="password" formControlName="password" class="form-control" required>
+      </div>
+
+      <div *ngIf="authForm.value.mode === 'login' && loginError" class="text-danger mb-2">{{ loginError }}</div>
+
+      <button class="btn btn-primary">{{ authForm.value.mode === 'login' ? 'Login' : 'Register & Login' }}</button>
+    </form>
+  </div>
+</div>

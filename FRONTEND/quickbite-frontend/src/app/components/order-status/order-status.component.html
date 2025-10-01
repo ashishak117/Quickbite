@@ -1,0 +1,81 @@
+<!-- <div class="card mt-3">
+  <div class="card-body">
+    <h5>My Orders</h5>
+
+    <div *ngIf="loading" class="text-muted">Loading...</div>
+
+    <div *ngIf="activeOrders.length === 0 && !loading" class="text-muted">No current orders.</div>
+    <div *ngFor="let o of activeOrders" class="border rounded p-2 mb-2">
+      <div><strong>Order #{{ o.id }}</strong> — ₹{{ o.totalAmount }} — {{ o.status }}</div>
+      <div *ngFor="let it of (o.items || [])"><small>{{ it.name }} x {{ it.qty }}</small></div>
+      <div class="mt-2">
+        <button *ngIf="o.status === 'OUT_FOR_DELIVERY' || o.status === 'OUT_FOR_DELIVERY'" class="btn btn-sm btn-success" (click)="confirmReceived(o.id)">I got the food</button>
+      </div>
+    </div>
+
+    <hr />
+
+    <h5>Order History</h5>
+    <div *ngIf="historyOrders.length === 0" class="text-muted">No order history</div>
+    <div *ngFor="let o of historyOrders" class="border p-2 mb-2">
+      <div><strong>Order #{{ o.id }}</strong> — ₹{{ o.totalAmount }} — {{ o.status }}</div>
+      <div *ngFor="let it of (o.items || [])"><small>{{ it.name }} x {{ it.qty }}</small></div>
+    </div>
+
+   
+    <div *ngIf="debugShowRaw" class="mt-3">
+      <h6>DEBUG (raw orders)</h6>
+      <pre style="max-height:300px; overflow:auto; background:#f8f9fa; padding:12px;">{{ orders | json }}</pre>
+    </div>
+  </div>
+</div> -->
+<!-- order-status.component.html (temporary debug X) -->
+<!-- src/app/components/order-status/order-status.component.html -->
+<div class="card mt-3">
+  <div class="card-body">
+    <h5>My Orders</h5>
+    <div *ngIf="loading" class="text-muted">Loading...</div>
+
+    <div *ngIf="activeOrders.length === 0 && !loading" class="text-muted">No current orders.</div>
+
+    <div *ngFor="let o of activeOrders" class="border rounded p-2 mb-2">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <strong>Order #{{ o.id }}</strong>
+          <div class="small text-muted">Placed: {{ o.createdAt | date:'medium' }}</div>
+        </div>
+        <div class="text-end">
+          <div class="fw-bold">₹{{ o.totalAmount }}</div>
+          <div class="small text-muted">Payment: {{ o.paymentMethod }}</div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <div *ngFor="let it of (o.items || [])" class="d-flex justify-content-between">
+          <div>
+            <strong>{{ it.name }}</strong>
+            <div class="small text-muted">{{ it.veg ? 'Veg' : 'Non-Veg' }} • Qty: {{ it.qty }}</div>
+          </div>
+          <div class="text-end">₹{{ it.price }}</div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <button *ngIf="o.status === 'OUT_FOR_DELIVERY' || o.status === 'OUT_FOR_DELIVERY'" class="btn btn-sm btn-success" (click)="confirmReceived(o.id)">I got the food</button>
+      </div>
+    </div>
+
+    <hr />
+
+    <h5>Order History</h5>
+    <div *ngIf="historyOrders.length === 0" class="text-muted">No order history</div>
+
+    <div *ngFor="let o of historyOrders" class="border p-2 mb-2">
+      <div class="d-flex justify-content-between">
+        <div><strong>Order #{{ o.id }}</strong><div class="small text-muted">Status: {{ o.status }}</div></div>
+        <div>₹{{ o.totalAmount }}</div>
+      </div>
+      <div *ngFor="let it of (o.items || [])" class="small">{{ it.name }} x {{ it.qty }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="mb-0">Profile</h5>
+      <div>
+        <button *ngIf="!editing" class="btn btn-sm btn-outline-primary me-2" (click)="edit()">Edit</button>
+        <button *ngIf="editing" class="btn btn-sm btn-primary me-2" [disabled]="saving" (click)="save()">
+          {{ saving ? 'Saving…' : 'Save' }}
+        </button>
+        <button *ngIf="editing" class="btn btn-sm btn-outline-secondary" (click)="cancel()" [disabled]="saving">Cancel</button>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input formControlName="name" class="form-control" [readonly]="!editing" [class.is-invalid]="form.controls.name.invalid && form.controls.name.touched" />
+        <div *ngIf="form.controls.name.invalid && form.controls.name.touched" class="invalid-feedback">Name is required</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email (read-only)</label>
+        <input formControlName="email" class="form-control" readonly />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Phone</label>
+        <input formControlName="phone" class="form-control" [readonly]="!editing" />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Address</label>
+        <input formControlName="address" class="form-control" [readonly]="!editing" />
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
+      <button type="submit" class="d-none"></button>
+    </form>
+  </div>
+</div>

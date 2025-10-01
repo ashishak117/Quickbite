@@ -1,0 +1,45 @@
+<div class="card p-3">
+  <h4>Register Restaurant</h4>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label class="form-label">Restaurant Name *</label>
+      <input class="form-control" formControlName="name" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">About</label>
+      <textarea class="form-control" rows="3" formControlName="about"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Address *</label>
+      <input class="form-control" formControlName="address" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Contact Email</label>
+      <input class="form-control" formControlName="email" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Phone</label>
+      <input class="form-control" formControlName="phone" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Restaurant Image</label>
+      <input type="file" class="form-control" (change)="onFileChange($event)" />
+      <div *ngIf="previewImage" class="mt-2">
+        <img [src]="previewImage" style="max-height:100px; object-fit:cover;" />
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="loading">
+      {{ loading ? 'Submitting...' : 'Register Restaurant' }}
+    </button>
+  </form>
+</div>

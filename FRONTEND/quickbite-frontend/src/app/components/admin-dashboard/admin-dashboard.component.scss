@@ -1,0 +1,12 @@
+.admin-dashboard .kpi-card{
+  background: linear-gradient(180deg, #fff, #fff);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(15,15,15,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+.kpi-card .kpi-title { font-weight: 600; opacity: .8; }
+.kpi-card .kpi-value { margin-top: 6px; color: var(--qb-primary); }
+
+.recent-order + .recent-order { margin-top: 6px; }
+.top-rest { padding: 6px 0; }
+.card { border-radius: 10px; box-shadow: 0 8px 20px rgba(15,15,15,0.04); }

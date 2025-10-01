@@ -1,0 +1,582 @@
+/* Swiggy-Inspired Modern UI Stylesheet */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Swiggy Color System */
+:root {
+  /* Primary Swiggy Colors */
+  --swiggy-orange: #fc8019;
+  --swiggy-orange-light: #ff9e49;
+  --swiggy-orange-dark: #e8720d;
+  --swiggy-orange-ultra-light: #fff4e6;
+  
+  /* Supporting Colors */
+  --swiggy-green: #60b246;
+  --swiggy-green-light: #7bc95d;
+  --swiggy-red: #e23744;
+  --swiggy-yellow: #ffcd3c;
+  
+  /* Neutral Colors */
+  --swiggy-dark: #282c3f;
+  --swiggy-dark-light: #3d4152;
+  --swiggy-gray: #686b78;
+  --swiggy-gray-light: #93959f;
+  --swiggy-light-gray: #e9ecef;
+  --swiggy-off-white: #f8f9fa;
+  --swiggy-white: #ffffff;
+  
+  /* Gradients */
+  --swiggy-gradient-primary: linear-gradient(135deg, #fc8019 0%, #ff9e49 100%);
+  --swiggy-gradient-food: linear-gradient(135deg, #fc8019 0%, #e8720d 100%);
+  --swiggy-gradient-success: linear-gradient(135deg, #60b246 0%, #7bc95d 100%);
+  
+  /* Shadows */
+  --swiggy-shadow-light: 0 2px 8px rgba(40, 44, 63, 0.08);
+  --swiggy-shadow-medium: 0 4px 16px rgba(40, 44, 63, 0.12);
+  --swiggy-shadow-heavy: 0 8px 32px rgba(40, 44, 63, 0.16);
+  --swiggy-shadow-orange: 0 4px 20px rgba(252, 128, 25, 0.2);
+  
+  /* Border Radius */
+  --swiggy-radius-sm: 6px;
+  --swiggy-radius-md: 8px;
+  --swiggy-radius-lg: 12px;
+  --swiggy-radius-xl: 16px;
+  
+  /* Transitions */
+  --swiggy-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --swiggy-transition-fast: all 0.15s ease-out;
+}
+
+/* Global Reset & Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding-top: 70px;
+  background-color: var(--swiggy-off-white);
+  color: var(--swiggy-dark);
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Container System */
+.container-max {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Enhanced Navbar - Swiggy Style */
+.navbar {
+  background: var(--swiggy-white) !important;
+  box-shadow: var(--swiggy-shadow-medium);
+  border-bottom: 1px solid var(--swiggy-light-gray);
+  backdrop-filter: blur(10px);
+  transition: var(--swiggy-transition);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+}
+
+.navbar.scrolled {
+  box-shadow: var(--swiggy-shadow-heavy);
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--swiggy-orange) !important;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  color: var(--swiggy-orange-dark) !important;
+  transform: scale(1.05);
+  transition: var(--swiggy-transition-fast);
+}
+
+.navbar .nav-link {
+  color: var(--swiggy-dark) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--swiggy-radius-md);
+  margin: 0 0.25rem;
+  transition: var(--swiggy-transition);
+  position: relative;
+}
+
+.navbar .nav-link:hover {
+  color: var(--swiggy-orange) !important;
+  background-color: var(--swiggy-orange-ultra-light);
+  transform: translateY(-1px);
+}
+
+.navbar .nav-link.active {
+  color: var(--swiggy-orange) !important;
+  background-color: var(--swiggy-orange-ultra-light);
+}
+
+/* Button System - Swiggy Inspired */
+.btn {
+  font-weight: 600;
+  border-radius: var(--swiggy-radius-md);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  text-transform: none;
+  letter-spacing: 0.3px;
+  transition: var(--swiggy-transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--swiggy-gradient-primary);
+  border-color: var(--swiggy-orange);
+  color: var(--swiggy-white);
+  box-shadow: var(--swiggy-shadow-orange);
+}
+
+.btn-primary:hover {
+  background: var(--swiggy-orange-dark);
+  border-color: var(--swiggy-orange-dark);
+  color: var(--swiggy-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(252, 128, 25, 0.3);
+}
+
+.btn-primary:focus {
+  background: var(--swiggy-orange-dark);
+  border-color: var(--swiggy-orange-dark);
+  color: var(--swiggy-white);
+  box-shadow: 0 0 0 3px rgba(252, 128, 25, 0.25);
+}
+
+.btn-outline-primary {
+  color: var(--swiggy-orange);
+  border-color: var(--swiggy-orange);
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: var(--swiggy-orange);
+  border-color: var(--swiggy-orange);
+  color: var(--swiggy-white);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: var(--swiggy-gradient-success);
+  border-color: var(--swiggy-green);
+  color: var(--swiggy-white);
+}
+
+.btn-success:hover {
+  background: var(--swiggy-green);
+  border-color: var(--swiggy-green);
+  color: var(--swiggy-white);
+  transform: translateY(-2px);
+}
+
+/* Card System - Food Card Inspired */
+.card {
+  background: var(--swiggy-white);
+  border: 1px solid var(--swiggy-light-gray);
+  border-radius: var(--swiggy-radius-lg);
+  box-shadow: var(--swiggy-shadow-light);
+  transition: var(--swiggy-transition);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--swiggy-shadow-heavy);
+  border-color: var(--swiggy-orange);
+}
+
+.card-img-top {
+  transition: var(--swiggy-transition);
+  object-fit: cover;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--swiggy-dark);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card-text {
+  color: var(--swiggy-gray);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Food Rating Badge */
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--swiggy-green);
+  color: var(--swiggy-white);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--swiggy-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.rating-badge .star {
+  margin-right: 0.25rem;
+  font-size: 0.7rem;
+}
+
+/* Badge System */
+.badge {
+  border-radius: var(--swiggy-radius-md);
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.3px;
+}
+
+.badge-primary {
+  background: var(--swiggy-orange);
+  color: var(--swiggy-white);
+}
+
+.badge-success {
+  background: var(--swiggy-green);
+  color: var(--swiggy-white);
+}
+
+.badge-warning {
+  background: var(--swiggy-yellow);
+  color: var(--swiggy-dark);
+}
+
+.badge-danger {
+  background: var(--swiggy-red);
+  color: var(--swiggy-white);
+}
+
+/* Form Controls */
+.form-control {
+  border-radius: var(--swiggy-radius-md);
+  border-color: var(--swiggy-light-gray);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  transition: var(--swiggy-transition);
+}
+
+.form-control:focus {
+  border-color: var(--swiggy-orange);
+  box-shadow: 0 0 0 3px rgba(252, 128, 25, 0.1);
+}
+
+/* Footer - Swiggy Style */
+.site-footer {
+  background: var(--swiggy-dark);
+  color: var(--swiggy-gray-light);
+  padding: 3rem 0 1.5rem;
+  margin-top: 4rem;
+  border-top: 4px solid var(--swiggy-orange);
+}
+
+.site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.site-footer h5 {
+  color: var(--swiggy-white);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: var(--swiggy-gray-light);
+  text-decoration: none;
+  transition: var(--swiggy-transition);
+  line-height: 2;
+}
+
+.site-footer a:hover {
+  color: var(--swiggy-orange);
+  padding-left: 0.25rem;
+}
+
+.site-footer .social-links a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: var(--swiggy-dark-light);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 0.5rem;
+  transition: var(--swiggy-transition);
+}
+
+.site-footer .social-links a:hover {
+  background: var(--swiggy-orange);
+  color: var(--swiggy-white);
+  transform: translateY(-2px);
+  padding-left: 0;
+}
+
+/* Modal System */
+.approval-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 44, 63, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+.approval-modal {
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--swiggy-white);
+  border-radius: var(--swiggy-radius-xl);
+  box-shadow: var(--swiggy-shadow-heavy);
+  padding: 2rem;
+  animation: slideInUp 0.3s ease;
+  position: relative;
+}
+
+.approval-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--swiggy-gradient-primary);
+  border-radius: var(--swiggy-radius-xl) var(--swiggy-radius-xl) 0 0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--swiggy-gray);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--swiggy-transition);
+}
+
+.modal-close:hover {
+  background: var(--swiggy-light-gray);
+  color: var(--swiggy-dark);
+}
+
+/* Layout Structure */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.flex-grow-1 {
+  flex: 1 0 auto;
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--swiggy-gradient-primary);
+  color: var(--swiggy-white);
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -6px, 0);
+  }
+  70% {
+    transform: translate3d(0, -3px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+/* Loading Animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--swiggy-white);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+  
+  .navbar .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .approval-modal {
+    padding: 1.5rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .hero-section {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-max {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .site-footer {
+    padding: 2rem 0 1rem;
+  }
+}
+
+/* Utility Classes */
+.text-orange {
+  color: var(--swiggy-orange) !important;
+}
+
+.bg-orange {
+  background-color: var(--swiggy-orange) !important;
+}
+
+.border-orange {
+  border-color: var(--swiggy-orange) !important;
+}
+
+.shadow-orange {
+  box-shadow: var(--swiggy-shadow-orange) !important;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  transition: var(--swiggy-transition);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
