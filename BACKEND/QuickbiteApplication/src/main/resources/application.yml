@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/quickbite?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: ashishsql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+          max-file-size: 10MB
+          max-request-size: 10MB
+
+server:
+  port: 8080
+
+# multipart settings: allow reasonably large images (10MB)
+
+app:
+  jwt:
+    secret: $2a$12$XIcO3d.J5xHlip7sN5ZRGOiOr4puEJawM31Vid/99xvYRgxDcZpRy
+    expiration-ms: 86400000 # 1 day
+  file:
+    upload-dir: ./uploads
+
+# springdoc
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

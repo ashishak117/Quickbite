@@ -1,0 +1,12 @@
+--INSERT INTO users (id, name, email, password, phone, address, role) VALUES
+--(1,'Admin','admin@qb.com','WTTm4w#HntneNEv$JxGDRfjqt@pDmk$K', '9999999999','', 'ADMIN'); -- replace password hashed
+---- We'll rely on runtime registration for owners/customers in dev
+--
+--INSERT INTO restaurant (id, name, about, address, email, phone, image, approved, owner_id) VALUES
+--(1,'Spice Villa','Tasty Indian food','MG Road, Bangalore','','','', true, 2),
+--(2,'Green Bites','Healthy veg meals','Indiranagar, Bangalore','','','', true, 2);
+--
+--INSERT INTO menu_item (id, restaurant_id, name, price, veg, published) VALUES
+--(1,1,'Butter Chicken',220,false,true),
+--(2,1,'Paneer Butter Masala',180,true,true),
+--(3,2,'Veg Bowl',150,true,true);
