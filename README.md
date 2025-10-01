@@ -246,19 +246,10 @@ JWT tokens are stored in LocalStorage and sent via `Authorization: Bearer <token
 - Confirm MySQL service is running
 - Verify credentials in `application.yml`
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 👥 Author
 
-- Your Name - [@ashishak117](https://github.com/ashishak117)
+- Ashish M kumar - [@ashishak117](https://github.com/ashishak117)
 
 ---
 
