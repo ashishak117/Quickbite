@@ -12,10 +12,9 @@ RUN npm run build -- --configuration=production && ls -R dist
 # ===== Runtime stage (nginx) =====
 FROM nginx:alpine
 
-# Adjust this path if your dist folder name is different
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy *contents* of dist subfolder(s) into nginx root
+COPY --from=build /app/dist/* /usr/share/nginx/html/
 
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
 
