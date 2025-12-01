@@ -1,19 +1,21 @@
 # ===== Build stage =====
 FROM node:20-alpine AS build
-
 WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build -- --configuration=production && ls -R dist
+RUN npm run build -- --configuration=production
 
 # ===== Runtime stage (nginx) =====
 FROM nginx:alpine
 
-# Copy *contents* of dist subfolder(s) into nginx root
-COPY --from=build /app/dist/* /usr/share/nginx/html/
+# Remove default nginx page
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy Angular build output (the "browser" folder) to nginx root
+COPY --from=build /app/dist/browser/ /usr/share/nginx/html/
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
