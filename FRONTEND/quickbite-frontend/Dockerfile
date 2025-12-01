@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build -- --configuration=production
+RUN npm run build -- --configuration=production && echo "==== DIST TREE ====" && ls -R dist
 
 # ===== Runtime stage (nginx) =====
 FROM nginx:alpine
