@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: quickbite-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: quickbite
+      MYSQL_USER: qbuser
+      MYSQL_PASSWORD: qbpass
+    volumes:
+      - quickbite_db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+  backend:
+    image: quickbite-backend:1.0.0
+    container_name: quickbite-backend
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/quickbite
+      SPRING_DATASOURCE_USERNAME: qbuser
+      SPRING_DATASOURCE_PASSWORD: qbpass
+    ports:
+      - "8080:8080"
+    # If you want uploads to persist on your host, uncomment:
+    # volumes:
+    #   - ./backend/uploads:/app/uploads
+
+  frontend:
+    image: quickbite-frontend:1.0.0
+    container_name: quickbite-frontend
+    depends_on:
+      - backend
+    ports:
+      - "4200:80"
+
+volumes:
+  quickbite_db_data:
